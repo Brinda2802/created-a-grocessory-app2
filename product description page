@@ -1,0 +1,148 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class prodes extends StatefulWidget {
+  const prodes({super.key});
+
+  @override
+  State<prodes> createState() => _prodesState();
+}
+
+class _prodesState extends State<prodes> {
+  @override
+  Widget build(BuildContext context) {
+    return
+      Scaffold(
+        appBar: AppBar(
+          title:
+          Row(
+            children: [
+              Text("Fruits and vegetables",style: GoogleFonts.scada(
+                fontSize: 25 ,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),),
+              /*CircleAvatar(
+                child: Image.asset("assets/carts.png",),
+              ),*/
+              Padding(
+                padding: const EdgeInsets.only(left:20.0),
+                child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Color(0xffAFE1AF),
+                      borderRadius: BorderRadius.circular(40),
+                      border: Border.all(color: Colors.black),
+                    ),
+                    child:Icon(CupertinoIcons.cart_badge_plus,color: Colors.black,size: 30,)
+                ),
+              )
+            ],
+          ),
+          backgroundColor: Color(0xffAFE1AF),
+          centerTitle: true,
+          elevation: 10,
+          shadowColor: Color(0xff00A36C),
+          shape:RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(200),
+                bottomRight: Radius.circular(10),
+              )
+          ),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(250),
+            child: Stack(
+              children: [
+                //Icon(Icons.arrow_back_ios_new_outlined,size: 30,color: Colors.black,),
+                /* Row(
+                  children: [
+                    Padding(
+                      padding:  EdgeInsets.only(left: 20.0,bottom: 100),
+                      child: Text("Fruits and vegetables",style: GoogleFonts.deliusSwashCaps(
+                        fontSize: 25 ,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),),
+                    ),
+                  ],
+                ),*/
+                Padding(
+                  padding:  EdgeInsets.only(top:10.0),
+                  child: Container(
+                      height: 230,
+                      width:280,
+                      child: Image.asset("assets/tomoto.png",fit: BoxFit.fill,)),
+                ),
+              ],
+            ),
+            /*CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(CupertinoIcons.cart_badge_plus,size: 20,color: Colors.black,),
+
+          ),*/
+          ),
+        ),
+        body:Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: OutlinedButton(onPressed: (
+                      ){
+
+                  }, child:Center(
+                    child: Row(
+                      children: [
+                        Text("Add Cart",style: GoogleFonts.poppins(
+                          fontSize: 20 ,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Icon(CupertinoIcons.cart_badge_plus,color: Colors.black,size: 20,),
+                        )
+                      ],
+                    ),
+                  ),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left:30.0),
+                  child: Container(
+                    height:40,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      color: Color(0xff000000),
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child:
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: [
+                            Text("Buy Now",style: GoogleFonts.raleway(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Icon(Icons.shop_two_sharp,color: Colors.white,size: 20,),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      );
+  }
+}
