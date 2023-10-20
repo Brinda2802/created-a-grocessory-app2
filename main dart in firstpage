@@ -1,0 +1,229 @@
+import 'package:anichaproducts/products.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:firstsplashscreenview/firstsplashscreenview.dart';
+import 'package:flutter_animated_splash/flutter_animated_splash.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:super_rich_text/super_rich_text.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:nimu_carousel/nimu_carousel.dart';
+import 'package:carousel_indicator/carousel_indicator.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: thirdpage(),
+    );
+  }
+}
+class secondpage extends StatefulWidget {
+  const secondpage({super.key});
+
+  @override
+  State<secondpage> createState() => _secondpageState();
+}
+
+class _secondpageState extends State<secondpage> {
+  final controller=PageController();
+  @override
+  Widget build(BuildContext context) {
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
+    LinearGradient myGradient = LinearGradient(
+      colors: [Color(0xff7ad452), Color(0xff2e6117)],
+      stops: [0.0, 1.0],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+    return Scaffold(
+      backgroundColor:Color(0xff00A36C),
+      body:
+      Column(
+        children: [
+          SizedBox(
+            height:height/1.047091,
+            child: PageView(
+              controller: controller,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xff7ad452), Color(0xff00A36C)],
+                    ),
+                  ),
+                  child: Column(
+                      children: [
+                        Padding(
+                          padding:  EdgeInsets.only(top:height/15.12),
+                          child: Lottie.asset("assets/shooping cart.json"),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top:height/15.12),
+                          child:
+                          RichText(
+                            text: TextSpan(
+                              /*  style: DefaultTextStyle.of(context).style,*/
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Order ',
+                                  style: GoogleFonts.deliusSwashCaps(
+                                    color: Colors.black,
+                                    fontSize: 40.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'your....',
+                                  style:GoogleFonts.deliusSwashCaps(
+                                    color: Colors.black,
+                                    fontSize: 28.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Text("Favourite items !",style: GoogleFonts.deliusSwashCaps(
+                          color: Colors.black,
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                        ),),
+                        Padding(
+                          padding:  EdgeInsets.only(top:height/15.12),
+                          child: Material(
+                            elevation: 3,
+                            borderRadius: BorderRadius.circular(15),
+                            shadowColor: CupertinoColors.systemGreen,
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context)=>products())
+                                );
+                              },
+                              child:
+                              Container(
+                                height:height/15.12,
+                                width:width/3,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff000000),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: width/22.5),
+                                      child: Text("Next",style: GoogleFonts.raleway(
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: width/14.4),
+                                      child: Icon(CupertinoIcons.arrow_right,color: Colors.white,size: 20,),
+                                    )
+                                  ],
+                                ),),
+                            ),
+                          ),
+                        )
+                      ]
+                  ),
+                ),
+                products(),
+              ],
+            ),
+          ),
+          SmoothPageIndicator(
+            controller: controller,
+            count: 2,
+            effect: JumpingDotEffect(
+              activeDotColor: Colors.black,
+              dotColor:Colors.black26,
+              dotHeight: 8,
+              dotWidth: 8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class thirdpage extends StatefulWidget {
+  const thirdpage({super.key});
+
+  @override
+  State<thirdpage> createState() => _thirdpageState();
+}
+
+class _thirdpageState extends State<thirdpage> {
+  @override
+  Widget build(BuildContext context) {
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
+    return Scaffold(
+      body:
+      Column(
+        children: [
+          Container(
+            height:height/1,
+            width:width/1,
+            child: AnimatedSplash(
+              type: Transition.rightToLeftWithFade,
+              child:Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: height/3.78),
+                    child: Image.asset("assets/camp.png"),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      /*  style: DefaultTextStyle.of(context).style,*/
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Anicha',
+                          style: GoogleFonts.sail(
+                            color: Colors.black,
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text("Products...",style: GoogleFonts.sail(
+                    color: Colors.black,
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),)
+                ],
+              ),
+              backgroundColor:Colors.white,
+              navigator:secondpage(),
+              durationInSeconds:5,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
